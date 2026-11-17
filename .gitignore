@@ -18,7 +18,8 @@ coverage/
 !.env.example
 appsettings.Local.json
 
-## Local SQLite / Dev DB files
+## Local SQLite / Dev DB files & Delivery ZIPs
 *.db
 *.db-shm
 *.db-wal
+*.zip
