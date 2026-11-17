@@ -8,4 +8,4 @@ INTEGRANTES DO GRUPO:
 - Kaiky Pereira Rodrigues Da Silva - RM 564578
 
 REPOSITÓRIO GITHUB:
-https://github.com/SEU-USUARIO/zelo-api-dotnet
+https://github.com/GabSolano/Zelo.net
