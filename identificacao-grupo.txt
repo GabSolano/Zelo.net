@@ -1,0 +1,11 @@
+GLOBAL SOLUTION 2026/2 - FIAP (Tema: CitizenTech)
+Projeto: Zelo — Cuidado que não vigia
+Disciplina: Advanced Business Development with .NET (zelo-api-dotnet)
+
+INTEGRANTES DO GRUPO:
+- Gabriel Costa Solano - RM 562325
+- Leandro Guarido de Oliveira - RM 561760
+- Kaiky Pereira Rodrigues Da Silva - RM 564578
+
+REPOSITÓRIO GITHUB:
+https://github.com/SEU-USUARIO/zelo-api-dotnet
