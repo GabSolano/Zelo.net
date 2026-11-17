@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Zelo.Api/Zelo.Api.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Zelo.Tests/Zelo.Tests.csproj" />
+  </Folder>
+</Solution>

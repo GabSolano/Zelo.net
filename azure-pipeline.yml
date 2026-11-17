@@ -1,0 +1,64 @@
+# ==============================================================================
+# Azure DevOps Pipeline - zelo-api-dotnet (CI: Restore, Build, Test, Publish)
+# Segredos (ConnectionStrings__Default, JWT_SECRET) ficam nas Variables da Pipeline
+# ==============================================================================
+trigger:
+  branches:
+    include:
+      - main
+
+pr:
+  branches:
+    include:
+      - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  buildConfiguration: 'Release'
+  dotnetVersion: '8.0.x'
+
+steps:
+  - task: UseDotNet@2
+    displayName: 'Use .NET 8 SDK'
+    inputs:
+      packageType: 'sdk'
+      version: '$(dotnetVersion)'
+
+  - task: DotNetCoreCLI@2
+    displayName: 'Restore NuGet Packages'
+    inputs:
+      command: 'restore'
+      projects: '**/*.csproj'
+
+  - task: DotNetCoreCLI@2
+    displayName: 'Build Solution'
+    inputs:
+      command: 'build'
+      projects: '**/*.csproj'
+      arguments: '--configuration $(buildConfiguration) --no-restore'
+
+  - task: DotNetCoreCLI@2
+    displayName: 'Run Unit & Integration Tests (xUnit)'
+    inputs:
+      command: 'test'
+      projects: 'tests/Zelo.Tests/Zelo.Tests.csproj'
+      arguments: '--configuration $(buildConfiguration) --no-build --logger trx'
+      publishTestResults: true
+
+  - task: DotNetCoreCLI@2
+    displayName: 'Publish API Artifact'
+    inputs:
+      command: 'publish'
+      publishWebProjects: false
+      projects: 'src/Zelo.Api/Zelo.Api.csproj'
+      arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory) --no-build'
+      zipAfterPublish: true
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: drop'
+    inputs:
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+      ArtifactName: 'drop'
+      publishLocation: 'Container'

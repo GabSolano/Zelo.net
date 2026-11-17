@@ -1,0 +1,24 @@
+## .NET / Visual Studio / Rider
+bin/
+obj/
+out/
+.vs/
+.idea/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+TestResults/
+coverage/
+
+## Environment & Secrets (Regra 9: nunca versionar credenciais)
+.env
+.env.*
+!.env.example
+appsettings.Local.json
+
+## Local SQLite / Dev DB files
+*.db
+*.db-shm
+*.db-wal
